@@ -1,0 +1,6 @@
+{
+    "buildCommand": "cd awps-website && npm install && npm run build",
+    "outputDirectory": "awps-website/dist",
+    "installCommand": "cd awps-website && npm install",
+    "framework": "vite"
+}
