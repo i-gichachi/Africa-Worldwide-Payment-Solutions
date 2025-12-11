@@ -27,8 +27,8 @@ export default function Header() {
     return (
         <header
             className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
-                    ? 'bg-navy shadow-lg py-3'
-                    : 'bg-navy/95 backdrop-blur-md py-4'
+                ? 'bg-white shadow-md py-3'
+                : 'bg-white/95 backdrop-blur-md py-4 shadow-sm'
                 }`}
         >
             <div className="container mx-auto px-4 lg:px-6">
@@ -40,8 +40,8 @@ export default function Header() {
                             <div className="absolute inset-0 bg-orange/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                         </div>
                         <div>
-                            <span className="text-2xl lg:text-3xl font-bold text-white tracking-tight">AWPS</span>
-                            <p className="text-[10px] lg:text-xs text-orange font-medium -mt-1">Payment Solutions</p>
+                            <span className="text-2xl lg:text-3xl font-bold text-navy tracking-tight">AWPS</span>
+                            <p className="text-[10px] lg:text-xs text-gray-600 font-medium -mt-1">Payment Solutions</p>
                         </div>
                     </Link>
 
@@ -52,8 +52,8 @@ export default function Header() {
                                 key={item.path}
                                 to={item.path}
                                 className={`px-4 py-2 rounded-lg text-sm xl:text-base font-medium transition-all duration-300 ${location.pathname === item.path
-                                        ? 'text-orange bg-white/10'
-                                        : 'text-white hover:text-orange hover:bg-white/5'
+                                    ? 'text-orange bg-orange/5'
+                                    : 'text-navy hover:text-orange hover:bg-orange/5'
                                     }`}
                             >
                                 {item.label}
@@ -61,7 +61,7 @@ export default function Header() {
                         ))}
                         <Link
                             to="/contact"
-                            className="ml-4 bg-orange text-white px-6 xl:px-8 py-2.5 xl:py-3 rounded-lg font-semibold text-sm xl:text-base hover:bg-white hover:text-navy transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 btn-hover-lift"
+                            className="ml-4 bg-orange text-white px-6 xl:px-8 py-2.5 xl:py-3 rounded-lg font-semibold text-sm xl:text-base hover:bg-orange/90 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 btn-hover-lift"
                         >
                             Get Started
                         </Link>
@@ -69,7 +69,7 @@ export default function Header() {
 
                     {/* Mobile Menu Button */}
                     <button
-                        className="lg:hidden text-white p-2 hover:bg-white/10 rounded-lg transition-colors"
+                        className="lg:hidden text-navy p-2 hover:bg-gray-100 rounded-lg transition-colors"
                         onClick={() => setIsMenuOpen(!isMenuOpen)}
                         aria-label="Toggle menu"
                     >
@@ -79,14 +79,14 @@ export default function Header() {
 
                 {/* Mobile Navigation */}
                 {isMenuOpen && (
-                    <nav className="lg:hidden mt-4 pb-4 space-y-2 animate-fade-in">
+                    <nav className="lg:hidden mt-4 pb-4 space-y-2 animate-fade-in bg-white border-t border-gray-100 pt-4">
                         {navItems.map((item) => (
                             <Link
                                 key={item.path}
                                 to={item.path}
                                 className={`block px-4 py-3 rounded-lg text-base font-medium transition-all ${location.pathname === item.path
-                                        ? 'text-orange bg-white/10'
-                                        : 'text-white hover:text-orange hover:bg-white/5'
+                                    ? 'text-orange bg-orange/5'
+                                    : 'text-navy hover:text-orange hover:bg-orange/5'
                                     }`}
                                 onClick={() => setIsMenuOpen(false)}
                             >
@@ -95,7 +95,7 @@ export default function Header() {
                         ))}
                         <Link
                             to="/contact"
-                            className="block text-center bg-orange text-white px-6 py-3 rounded-lg font-semibold text-base hover:bg-white hover:text-navy transition-all duration-300 shadow-lg mt-4"
+                            className="block text-center bg-orange text-white px-6 py-3 rounded-lg font-semibold text-base hover:bg-orange/90 transition-all duration-300 shadow-lg mt-4"
                             onClick={() => setIsMenuOpen(false)}
                         >
                             Get Started

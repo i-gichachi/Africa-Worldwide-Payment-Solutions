@@ -1,72 +1,61 @@
-import { Check, X, ArrowRight, Zap, Clock, Star, HelpCircle, MessageCircle } from 'lucide-react';
+import { Check, X, ArrowRight, Zap, Clock, Star, HelpCircle, MessageCircle, ChevronDown, Building2, TrendingUp, Briefcase, Sparkles, Crown, Shield } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 
 export default function Pricing() {
-    const [billingCycle, setBillingCycle] = useState('monthly');
     const [openFaq, setOpenFaq] = useState(null);
 
     const pricingTiers = [
         {
-            name: 'Initial Consultation',
-            price: '50,000',
-            period: 'one-time',
-            description: 'Perfect for businesses exploring payment optimization',
+            name: 'Starter',
+            badge: 'For Small Businesses',
+            icon: Building2,
+            price: '49,999',
+            period: '/month',
+            description: 'Perfect for small businesses starting their payment optimization journey',
             features: [
-                'Comprehensive payment system audit',
-                '2-hour consultation session',
-                'Written recommendations report',
-                'Provider comparison analysis',
-                'Cost savings projection',
-                '30-day email support'
+                'Initial payment system audit',
+                'Basic provider comparison',
+                'Email support (48h response)',
+                'Monthly performance report'
             ],
-            notIncluded: [
-                'Implementation support',
-                'Ongoing optimization'
-            ],
-            cta: 'Book Consultation',
-            gradient: 'from-blue-500 to-blue-600',
+            cta: 'Get Started',
             popular: false
         },
         {
-            name: 'Project-Based',
-            price: '250,000',
-            period: 'starting at',
-            description: 'Ideal for businesses implementing new payment solutions',
+            name: 'Professional',
+            badge: 'For Growing Businesses',
+            icon: TrendingUp,
+            price: '99,999',
+            period: '/month',
+            description: 'Comprehensive solutions for businesses ready to scale',
             features: [
-                'Everything in Consultation',
-                'End-to-end implementation',
-                'Provider negotiation support',
-                'Technical integration guidance',
-                'Testing and validation',
-                'Staff training (up to 10 people)',
-                '90-day post-launch support',
-                'Performance monitoring setup'
+                'Everything in Starter',
+                'Advanced provider negotiation',
+                'Priority email & phone support',
+                'Bi-weekly strategy calls',
+                'Fraud prevention setup',
+                'Technical integration support'
             ],
-            notIncluded: [],
             cta: 'Get Started',
-            gradient: 'from-orange-500 to-orange-600',
             popular: true
         },
         {
-            name: 'Monthly Retainer',
-            price: '150,000',
-            period: 'per month',
-            description: 'Best for businesses requiring ongoing payment optimization',
+            name: 'Enterprise',
+            badge: 'For Large Organizations',
+            icon: Briefcase,
+            price: 'Custom',
+            period: '',
+            description: 'Tailored solutions for complex, multi-country operations',
             features: [
-                'Everything in Project-Based',
+                'Everything in Professional',
                 'Dedicated account manager',
-                'Monthly strategy sessions',
-                'Continuous optimization',
-                'Priority support (24/7)',
-                'Quarterly business reviews',
-                'Cost reduction tracking',
-                'Industry insights & updates',
-                'Unlimited consultations'
+                '24/7 priority support',
+                'Custom SLA agreement',
+                'Multi-country strategy',
+                'On-site training workshops'
             ],
-            notIncluded: [],
             cta: 'Contact Sales',
-            gradient: 'from-purple-500 to-purple-600',
             popular: false
         }
     ];
@@ -98,251 +87,242 @@ export default function Pricing() {
         }
     ];
 
+    const enterpriseFeatures = [
+        { icon: Zap, title: 'Dedicated Account Manager', description: 'Your personal point of contact for all payment needs' },
+        { icon: Shield, title: 'Custom SLA Agreements', description: 'Guaranteed response times and performance metrics' },
+        { icon: Crown, title: 'Multi-Country Strategy', description: 'Unified payment solutions across borders' },
+        { icon: MessageCircle, title: 'On-Site Training', description: 'Hands-on workshops for your finance team' },
+        { icon: Star, title: 'Quarterly Business Reviews', description: 'Strategic planning and performance analysis' },
+        { icon: Clock, title: 'Priority 24/7 Support', description: 'Round-the-clock assistance for critical issues' }
+    ];
+
     return (
-        <div className="min-h-screen pt-20">
-            {/* Hero Section - Redesigned Pattern & No Wave */}
-            <section className="relative bg-gradient-to-br from-[#1B2A4E] via-[#1a2847] to-[#0f1829] text-white py-12 sm:py-20 lg:py-32 overflow-hidden">
-                {/* Animated Geometric Pattern */}
-                <div className="absolute inset-0 opacity-5">
-                    <div className="absolute top-10 left-10 w-64 h-64 bg-[#F89542] rounded-full mix-blend-multiply filter blur-xl animate-float"></div>
-                    <div className="absolute top-20 right-20 w-96 h-96 bg-[#F89542] rounded-full mix-blend-multiply filter blur-xl animate-float" style={{ animationDelay: '1s' }}></div>
-                    <div className="absolute bottom-10 left-1/3 w-48 h-48 bg-[#F89542] rounded-full mix-blend-multiply filter blur-xl animate-float" style={{ animationDelay: '2s' }}></div>
-                </div>
-
-                {/* Glowing Orbs */}
-                <div className="absolute inset-0 opacity-20">
-                    <div className="absolute top-20 right-10 w-96 h-96 bg-[#F89542] rounded-full mix-blend-multiply filter blur-3xl animate-pulse"></div>
-                    <div className="absolute bottom-20 left-10 w-96 h-96 bg-[#F89542] rounded-full mix-blend-multiply filter blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
-                </div>
-
-                <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="min-h-screen pt-16 sm:pt-20">
+            {/* Hero Section - Clean White */}
+            <section className="relative bg-white pt-20 pb-12 md:pt-32 md:pb-20 border-b border-gray-100">
+                <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="max-w-4xl mx-auto text-center">
-                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-6 animate-fade-in-up">
-                            <Star className="w-4 h-4 text-[#F89542]" />
-                            <span className="text-sm font-medium">Transparent, Value-Based Pricing</span>
-                        </div>
+                        {/* Accent line */}
+                        <div className="w-16 h-1 md:w-20 bg-gradient-to-r from-[#F89542] to-orange-300 mx-auto mb-6"></div>
 
-                        <h1 className="text-3xl sm:text-5xl lg:text-7xl font-extrabold mb-6 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-                            Simple, <span className="text-[#F89542]">Fair Pricing</span>
+                        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-[#1B2A4E] mb-4 md:mb-6">
+                            <span className="text-[#F89542]">Transparent</span> Pricing
                         </h1>
-                        <p className="text-base sm:text-xl lg:text-2xl text-gray-300 leading-relaxed max-w-3xl mx-auto animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
-                            Choose the package that fits your business needs. All prices in Kenyan Shillings (KES). No hidden fees.
+                        <p className="text-lg sm:text-xl md:text-2xl text-gray-600 leading-relaxed">
+                            Choose the perfect package for your business needs
                         </p>
                     </div>
                 </div>
-
-                {/* Subtle Gradient Fade at Bottom */}
-                <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#F8F9FA] to-transparent opacity-10"></div>
             </section>
 
-            {/* Pricing Cards - Light Gray Background */}
-            <section className="py-12 sm:py-20 bg-[#F8F9FA]">
+            {/* Pricing Tiers - Sophisticated Cards */}
+            <section className="py-12 md:py-20 bg-gradient-to-b from-white to-gray-50">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="grid lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+                    <div className="grid md:grid-cols-3 gap-6 md:gap-8 max-w-7xl mx-auto items-start">
                         {pricingTiers.map((tier, index) => (
                             <div
                                 key={index}
-                                className={`relative bg-white rounded-3xl p-6 sm:p-8 lg:p-10 shadow-xl border-2 transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 animate-fade-in-up ${tier.popular
-                                        ? 'border-[#F89542] lg:-mt-4 lg:mb-4'
-                                        : 'border-gray-100'
+                                className={`relative bg-white rounded-3xl p-6 md:p-8 lg:p-10 shadow-sm transition-all duration-500 group ${tier.popular
+                                    ? 'border-4 border-[#F89542] md:scale-105 shadow-2xl hover:scale-110 z-10'
+                                    : 'border-2 border-gray-200 hover:shadow-xl'
                                     }`}
-                                style={{ animationDelay: `${index * 0.1}s` }}
                             >
+                                {/* Background Effects */}
+                                {tier.popular ? (
+                                    <div className="absolute inset-0 bg-gradient-to-br from-orange-100/30 via-orange-50/20 to-transparent rounded-3xl blur-xl opacity-50"></div>
+                                ) : (
+                                    <div className="absolute inset-0 bg-gradient-to-br from-gray-50/50 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                                )}
+
+                                {/* Most Popular Badge */}
                                 {tier.popular && (
-                                    <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                                        <div className="bg-gradient-to-r from-[#F89542] to-[#ff9d5c] text-white px-6 py-2 rounded-full font-bold text-xs sm:text-sm shadow-lg flex items-center gap-2">
-                                            <Star className="w-3 h-3 sm:w-4 sm:h-4" />
-                                            MOST POPULAR
+                                    <div className="absolute -top-5 left-1/2 -translate-x-1/2">
+                                        <div className="relative">
+                                            <div className="absolute inset-0 bg-gradient-to-r from-[#F89542] to-orange-400 rounded-full blur-md"></div>
+                                            <div className="relative bg-gradient-to-r from-[#F89542] to-orange-400 text-white px-6 py-2 md:px-8 md:py-3 rounded-full text-xs md:text-sm font-bold shadow-xl flex items-center gap-2">
+                                                <Sparkles className="w-3 h-3 md:w-4 md:h-4" />
+                                                <span>Most Popular</span>
+                                            </div>
                                         </div>
                                     </div>
                                 )}
 
-                                <div className="text-center mb-6 sm:mb-8">
-                                    <h3 className="text-xl sm:text-2xl font-bold text-[#1B2A4E] mb-3">
+                                <div className={`relative z-10 ${tier.popular ? 'mt-4' : ''}`}>
+                                    {/* Tier badge with icon */}
+                                    <div className={`flex items-center gap-2 text-xs md:text-sm font-semibold mb-4 ${tier.popular ? 'text-[#F89542]' : 'text-gray-600'}`}>
+                                        <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${tier.popular ? 'bg-gradient-to-br from-orange-50 to-orange-100' : 'bg-gray-100'}`}>
+                                            <tier.icon className={`w-4 h-4 ${tier.popular ? 'text-[#F89542]' : 'text-gray-600'}`} />
+                                        </div>
+                                        <span>{tier.badge}</span>
+                                    </div>
+
+                                    {/* Tier name */}
+                                    <h3 className="text-2xl md:text-3xl font-bold text-[#1B2A4E] mb-4">
                                         {tier.name}
                                     </h3>
-                                    <div className="flex items-baseline justify-center gap-2 mb-2">
-                                        <span className="text-sm text-gray-600">KES</span>
-                                        <span className="text-4xl sm:text-5xl font-extrabold text-[#1B2A4E]">
-                                            {tier.price}
-                                        </span>
+
+                                    {/* Price */}
+                                    <div className="mb-6">
+                                        <div className="flex items-baseline gap-2">
+                                            {tier.price !== 'Custom' && <span className="text-sm text-gray-500 font-medium">KES</span>}
+                                            <span className={`text-4xl md:text-5xl font-bold ${tier.popular ? 'bg-gradient-to-r from-[#1B2A4E] to-[#2a3f6e] bg-clip-text text-transparent' : 'text-[#1B2A4E]'}`}>
+                                                {tier.price}
+                                            </span>
+                                            <span className="text-gray-600 font-medium text-sm">{tier.period}</span>
+                                        </div>
                                     </div>
-                                    <p className="text-sm text-gray-600 font-medium">{tier.period}</p>
-                                    <p className="text-sm sm:text-base text-gray-700 mt-4 leading-relaxed">
+
+                                    {/* Description */}
+                                    <p className="text-gray-600 mb-8 text-sm leading-relaxed min-h-[40px]">
                                         {tier.description}
                                     </p>
-                                </div>
 
-                                <Link
-                                    to="/contact"
-                                    className={`block w-full text-center px-6 py-3 sm:px-8 sm:py-4 rounded-xl font-bold text-base sm:text-lg mb-6 sm:mb-8 transition-all duration-300 ${tier.popular
-                                            ? 'bg-gradient-to-r from-[#F89542] to-[#ff9d5c] text-white hover:shadow-xl hover:scale-105'
-                                            : 'bg-[#1B2A4E] text-white hover:bg-[#F89542]'
-                                        }`}
-                                >
-                                    {tier.cta}
-                                </Link>
+                                    {/* CTA Button */}
+                                    <Link
+                                        to="/contact"
+                                        className={`w-full block text-center px-6 py-4 rounded-xl font-bold transition-all duration-300 mb-8 group/btn text-sm md:text-base ${tier.popular
+                                            ? 'bg-gradient-to-r from-[#F89542] to-orange-400 text-white hover:from-[#e8854a] hover:to-orange-500 shadow-xl hover:shadow-2xl hover:scale-105'
+                                            : 'bg-white border-2 border-[#1B2A4E] text-[#1B2A4E] hover:bg-[#1B2A4E] hover:text-white'
+                                            }`}
+                                    >
+                                        <span className="flex items-center justify-center gap-2">
+                                            {tier.cta}
+                                            <ArrowRight className="w-4 h-4 md:w-5 md:h-5 group-hover/btn:translate-x-1 transition-transform" />
+                                        </span>
+                                    </Link>
 
-                                <div className="space-y-3 sm:space-y-4 mb-6">
-                                    <p className="text-xs sm:text-sm font-bold text-[#1B2A4E] uppercase tracking-wide">
-                                        What's Included:
-                                    </p>
-                                    {tier.features.map((feature, i) => (
-                                        <div key={i} className="flex items-start gap-3">
-                                            <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5">
-                                                <Check className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-green-600" />
-                                            </div>
-                                            <span className="text-gray-700 text-xs sm:text-sm leading-relaxed">{feature}</span>
-                                        </div>
-                                    ))}
-                                    {tier.notIncluded.length > 0 && (
-                                        <>
-                                            {tier.notIncluded.map((feature, i) => (
-                                                <div key={i} className="flex items-start gap-3 opacity-50">
-                                                    <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-gray-100 flex items-center justify-center flex-shrink-0 mt-0.5">
-                                                        <X className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-gray-400" />
-                                                    </div>
-                                                    <span className="text-gray-500 text-xs sm:text-sm leading-relaxed">{feature}</span>
+                                    {/* Divider */}
+                                    <div className={`border-t mb-6 ${tier.popular ? 'border-orange-200' : 'border-gray-200'}`}></div>
+
+                                    {/* Features */}
+                                    <div className="space-y-4">
+                                        {tier.features.map((feature, idx) => (
+                                            <div key={idx} className="flex items-start gap-3 group/item">
+                                                <div className={`flex-shrink-0 w-5 h-5 md:w-6 md:h-6 rounded-full flex items-center justify-center mt-0.5 transition-transform group-hover/item:scale-110 ${tier.popular
+                                                    ? 'bg-gradient-to-br from-[#F89542] to-orange-400 shadow-md'
+                                                    : 'bg-gradient-to-br from-orange-50 to-orange-100'
+                                                    }`}>
+                                                    <Check className={`w-3 h-3 md:w-4 md:h-4 font-bold ${tier.popular ? 'text-white' : 'text-[#F89542]'}`} />
                                                 </div>
-                                            ))}
-                                        </>
-                                    )}
+                                                <span className="text-xs md:text-sm text-gray-700 leading-relaxed font-medium">{feature}</span>
+                                            </div>
+                                        ))}
+                                    </div>
                                 </div>
                             </div>
                         ))}
                     </div>
-
-                    <p className="text-center text-xs sm:text-sm text-gray-400 mt-12">
-            /* PLACEHOLDER PRICING - Client to provide actual pricing structure */
-                    </p>
                 </div>
             </section>
 
-            {/* Enterprise Section - White Background */}
-            <section className="py-12 sm:py-20 bg-white">
+            {/* Enterprise Features - Sophisticated */}
+            <section className="py-12 md:py-20 bg-white border-y border-gray-100">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="max-w-5xl mx-auto">
-                        <div className="bg-gradient-to-br from-[#1B2A4E] to-[#0f1829] rounded-3xl p-8 sm:p-10 lg:p-16 text-white relative overflow-hidden shadow-2xl">
-                            {/* Background Pattern */}
-                            <div className="absolute inset-0 opacity-10">
-                                <div className="absolute top-0 right-0 w-64 h-64 bg-[#F89542] rounded-full blur-3xl animate-pulse"></div>
-                            </div>
+                    <div className="text-center mb-8 md:mb-12">
 
-                            <div className="relative z-10 grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-                                <div>
-                                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-6">
-                                        <Zap className="w-4 h-4 text-[#F89542]" />
-                                        <span className="text-sm font-medium">Custom Solutions</span>
-                                    </div>
-                                    <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold mb-4">
-                                        Enterprise Solutions
-                                    </h2>
-                                    <p className="text-base sm:text-lg text-gray-300 mb-8 leading-relaxed">
-                                        For large organizations with complex payment needs across multiple African markets
-                                    </p>
-                                    <Link
-                                        to="/contact"
-                                        className="inline-flex items-center gap-2 bg-[#F89542] text-white px-6 py-3 sm:px-8 sm:py-4 rounded-xl font-bold text-base sm:text-lg hover:bg-white hover:text-[#1B2A4E] transition-all duration-300 shadow-lg"
-                                    >
-                                        Contact Sales
-                                        <ArrowRight className="w-5 h-5" />
-                                    </Link>
-                                </div>
+                        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#1B2A4E] mb-4">
+                            Enterprise-Grade Solutions
+                        </h2>
+                        <p className="text-base md:text-lg text-gray-600">
+                            For organizations with complex requirements
+                        </p>
+                    </div>
 
-                                <div className="space-y-4">
-                                    {[
-                                        'Dedicated team of payment experts',
-                                        'White-glove implementation support',
-                                        'Custom SLA agreements',
-                                        'Multi-country payment strategy',
-                                        'Executive quarterly reviews',
-                                        'Priority 24/7 support'
-                                    ].map((feature, index) => (
-                                        <div key={index} className="flex items-center gap-3 bg-white/10 backdrop-blur-sm rounded-xl p-4 hover:bg-white/20 transition-colors duration-300">
-                                            <Check className="w-5 h-5 sm:w-6 sm:h-6 text-[#F89542] flex-shrink-0" />
-                                            <span className="text-white font-medium text-sm sm:text-base">{feature}</span>
-                                        </div>
-                                    ))}
+                    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 max-w-6xl mx-auto">
+                        {enterpriseFeatures.map((feature, idx) => (
+                            <div key={idx} className="bg-gradient-to-br from-white to-gray-50 border border-gray-200 rounded-2xl p-6 hover:shadow-lg transition-all duration-300 group">
+                                <div className="w-10 h-10 md:w-12 md:h-12 bg-gradient-to-br from-orange-50 to-orange-100 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                                    <feature.icon className="w-5 h-5 md:w-6 md:h-6 text-[#F89542]" />
                                 </div>
+                                <h3 className="text-base md:text-lg font-bold text-[#1B2A4E] mb-2">
+                                    {feature.title}
+                                </h3>
+                                <p className="text-xs md:text-sm text-gray-600 leading-relaxed">
+                                    {feature.description}
+                                </p>
                             </div>
-                        </div>
+                        ))}
                     </div>
                 </div>
             </section>
 
-            {/* FAQ Section - Light Blue Tint Background */}
-            <section className="py-12 sm:py-20 bg-[#F0F7FF]">
+            {/* FAQs - Sophisticated Styling */}
+            <section className="py-12 md:py-20 bg-[#F8F9FA]">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="max-w-4xl mx-auto">
-                        <div className="text-center mb-12 sm:mb-16">
-                            <h2 className="text-3xl sm:text-4xl sm:text-5xl font-extrabold text-[#1B2A4E] mb-4">
+                    <div className="max-w-3xl mx-auto">
+                        <div className="text-center mb-8 md:mb-12">
+                            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#1B2A4E] mb-3 md:mb-4">
                                 Pricing <span className="text-[#F89542]">FAQs</span>
                             </h2>
-                            <p className="text-base sm:text-lg text-gray-600">
-                                Common questions about our pricing and packages
+                            <p className="text-sm md:text-base text-gray-600">
+                                Common questions about our packages
                             </p>
                         </div>
 
-                        <div className="space-y-4">
+                        <div className="space-y-3 md:space-y-4">
                             {faqs.map((faq, index) => (
                                 <div
                                     key={index}
-                                    className="bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl"
+                                    className="bg-white border-2 border-gray-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-md hover:border-orange-200 transition-all duration-300"
                                 >
                                     <button
                                         onClick={() => setOpenFaq(openFaq === index ? null : index)}
-                                        className="w-full px-6 py-5 sm:px-8 sm:py-6 flex items-center justify-between text-left hover:bg-gray-50 transition-colors"
+                                        className="w-full px-5 py-4 md:px-6 md:py-5 flex items-center justify-between text-left group"
                                     >
-                                        <span className="text-base sm:text-lg font-bold text-[#1B2A4E] pr-8">
+                                        <span className="text-sm md:text-base font-bold text-[#1B2A4E] pr-8 group-hover:text-[#F89542] transition-colors">
                                             {faq.question}
                                         </span>
-                                        <HelpCircle
-                                            className={`w-5 h-5 sm:w-6 sm:h-6 text-[#F89542] flex-shrink-0 transition-transform duration-300 ${openFaq === index ? 'rotate-180' : ''
-                                                }`}
-                                        />
+                                        <div className={`flex-shrink-0 w-6 h-6 md:w-8 md:h-8 rounded-full bg-orange-50 flex items-center justify-center transition-all duration-300 ${openFaq === index ? 'rotate-180 bg-[#F89542]' : ''}`}>
+                                            <ChevronDown className={`w-4 h-4 md:w-5 md:h-5 transition-colors ${openFaq === index ? 'text-white' : 'text-[#F89542]'}`} />
+                                        </div>
                                     </button>
                                     {openFaq === index && (
-                                        <div className="px-6 pb-5 sm:px-8 sm:pb-6">
-                                            <p className="text-sm sm:text-base text-gray-700 leading-relaxed">{faq.answer}</p>
+                                        <div className="px-5 pb-5 md:px-6 md:pb-6 animate-fadeIn">
+                                            <div className="pt-2 border-t border-gray-100">
+                                                <p className="text-xs md:text-sm text-gray-600 leading-relaxed mt-3 md:mt-4">{faq.answer}</p>
+                                            </div>
                                         </div>
                                     )}
                                 </div>
                             ))}
                         </div>
-
-                        <div className="mt-12 text-center">
-                            <p className="text-gray-600 mb-6">Still have questions?</p>
-                            <Link
-                                to="/contact"
-                                className="inline-flex items-center gap-2 bg-[#1B2A4E] text-white px-8 py-4 rounded-xl font-bold hover:bg-[#F89542] transition-all duration-300"
-                            >
-                                <MessageCircle className="w-5 h-5" />
-                                Contact Us
-                            </Link>
-                        </div>
                     </div>
                 </div>
             </section>
 
-            {/* CTA Section */}
-            <section className="py-12 sm:py-20 bg-gradient-to-r from-[#F89542] to-[#ff9d5c] text-white relative overflow-hidden">
-                <div className="absolute inset-0 opacity-10">
-                    <div className="absolute top-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl animate-pulse"></div>
-                </div>
-                <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-                    <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold mb-6">
-                        Ready to Get Started?
-                    </h2>
-                    <p className="text-base sm:text-xl mb-10 max-w-2xl mx-auto opacity-95">
-                        Schedule a free discovery call to discuss which package is right for you
-                    </p>
-                    <Link
-                        to="/contact"
-                        className="inline-flex items-center gap-2 bg-white text-[#F89542] px-8 py-4 sm:px-10 sm:py-5 rounded-xl font-bold text-base sm:text-lg hover:bg-[#1B2A4E] hover:text-white transition-all duration-300 shadow-2xl hover:scale-105"
-                    >
-                        <Clock className="w-5 h-5 sm:w-6 sm:h-6" />
-                        Book Free Consultation
-                    </Link>
+            {/* Final CTA - Premium Card Wrapper */}
+            <section className="py-16 md:py-24 bg-gradient-to-b from-white to-gray-50">
+                <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="max-w-4xl mx-auto">
+                        <div className="relative">
+                            {/* Glow effect */}
+                            <div className="absolute inset-0 bg-gradient-to-r from-orange-200 via-orange-100 to-orange-200 rounded-3xl blur-3xl opacity-20"></div>
+
+                            <div className="relative bg-white border-2 border-gray-200 rounded-3xl p-8 md:p-16 shadow-2xl text-center">
+                                <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-[#1B2A4E] mb-4 md:mb-6">
+                                    Ready to Get Started?
+                                </h2>
+                                <p className="text-base md:text-xl text-gray-600 mb-8 md:mb-10 max-w-2xl mx-auto leading-relaxed">
+                                    Schedule a free discovery call to discuss which package is right for your business
+                                </p>
+
+                                <Link
+                                    to="/contact"
+                                    className="inline-flex items-center gap-3 bg-gradient-to-r from-[#F89542] to-orange-400 text-white px-8 py-4 md:px-12 md:py-5 rounded-xl font-bold text-base md:text-lg hover:from-[#e8854a] hover:to-orange-500 transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-105"
+                                >
+                                    <Clock className="w-5 h-5 md:w-6 md:h-6" />
+                                    <span>Book Free Consultation</span>
+                                    <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
+                                </Link>
+
+                                {/* Trust indicator */}
+                                <p className="text-xs md:text-sm text-gray-500 mt-6 md:mt-8 flex items-center justify-center gap-2">
+                                    <Shield className="w-3 h-3 md:w-4 md:h-4" />
+                                    <span>No commitment required • 30-minute session</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
         </div>

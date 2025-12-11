@@ -8,7 +8,7 @@ const Section = ({ children, className = '', background = 'white' }) => {
     }
 
     return (
-        <section className={`py-16 md:py-24 ${backgrounds[background]} ${className}`}>
+        <section className={`py-20 md:py-32 ${backgrounds[background]} ${className}`}>
             <div className="container">
                 {children}
             </div>

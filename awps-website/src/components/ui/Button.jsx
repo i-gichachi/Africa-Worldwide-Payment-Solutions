@@ -1,7 +1,7 @@
 import React from 'react'
 
 const Button = ({ children, variant = 'primary', className = '', ...props }) => {
-    const baseStyles = 'px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:shadow-lg'
+    const baseStyles = 'px-6 py-3 rounded-lg font-semibold btn-hover-lift'
 
     const variants = {
         primary: 'bg-orange text-white hover:bg-orange/90',
